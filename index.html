@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Train Scheduler</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
+
 </head>
 <body>
 <header class="header">Anytime is Train Time</header>
@@ -17,29 +20,55 @@
 		</th>
 	</ul>
 </div>
+<div class="container">
+	<table class="table text-center table-responsive" id="trainSchedule">
+	    <thead class="thead-default">
+	       <tr>
+	        <th class="text-center">Train Name</th>
+	        <th class="text-center">Destination</th>
+	        <th class="text-center">Frequency (min)</th>
+	        <th class="text-center">Next Arrival</th>
+	        <th class="text-center">Minutes Away</th>
+	    </thead>
+	    <tbody>
+	       <tr>
+	       </tr>
+	    </tbody>
+	</table>
+</div>
 
-<form>
+<form class="container">
+	<div class="form-group">
+	    <label for="Train Name">Train Name</label>
+	    <input type="text" class="form-control" id="trainName" placeholder="Enter Train Name">
+  	</div>
+  	<div class="form-group">
+	    <label for="Destination">Destination</label>
+	    <input type="text" class="form-control" id="destination" placeholder="Enter Destination">
+  	</div>
+	<div class="form-group">
+	    <label for="Train Time">First Train Time (HH:mm - 24 hour format)</label>
+	    <input type="text" class="form-control" id="trainTime" placeholder="Enter Train Time">
+	</div>
+	<div class="form-group">
+	    <label for="Frequency">Frequency (min)</label>
+	    <input type="text" class="form-control" id="frequency" placeholder="Enter Enter Frequency">
+	</div>
 	
 </form>
+
 </body>
-<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyD1PKOz5uBByt0jmnUDdebdc8InEyh0lTU",
-    authDomain: "train-scheduler-f796f.firebaseapp.com",
-    databaseURL: "https://train-scheduler-f796f.firebaseio.com",
-    storageBucket: "",
-    messagingSenderId: "892159836978"
-  };
-  firebase.initializeApp(config);
-</script>
 
-<script type="text/javascript" src="assets/javascript/app.js"> </script>
+	<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js">
+	</script>
 
-<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous">
-</script>
+	<script type="text/javascript" src="assets/javascript/app.js"> 
+	</script>
 
-<script type="text/javascript" src="assets/train.js"> </script>
+	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous">
+	</script>
+
+	<script type="text/javascript" src="assets/train.js"> 
+	</script>
 
 </html>
