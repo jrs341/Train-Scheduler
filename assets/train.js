@@ -1,4 +1,5 @@
-// .format('hh:mm:ss a')
+$(document).ready(function(){
+
  // Initialize Firebase
  var config = {
     apiKey: "AIzaSyC-T4CF5Tpz3hK9pm9uNOAcfLj1aZc5cgA",
@@ -67,7 +68,8 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	var destination = childSnapshot.val().destination;
 	var firstTrain = childSnapshot.val().firstTrain;
 	var trainFrequency = childSnapshot.val().frequency;
-
+	var nextArrival = moment(trainTime).toNow();
+	// var minutesAway = countdown every frequency
 	// Employee Info
 	console.log(trainName);
 	console.log(destination);
@@ -86,8 +88,11 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	// console.log(empBilled);
 
 	// Add each train's data into the table
-	$("#trainSchedule > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + trainFrequency + "</td>");
+	$("#trainSchedule > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + trainFrequency + "</td><td>" + nextArrival + "</td>");
+// database.ref closing bracket
+});
 
+// document.ready closing bracket
 });
 
 
