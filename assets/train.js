@@ -1,4 +1,4 @@
-
+// .format('hh:mm:ss a')
  // Initialize Firebase
  var config = {
     apiKey: "AIzaSyC-T4CF5Tpz3hK9pm9uNOAcfLj1aZc5cgA",
@@ -10,6 +10,12 @@
   firebase.initializeApp(config);
 
 var database = firebase.database();
+
+function update() {
+  $('#clock').html(moment().format('D. MMMM YYYY H:mm:ss'));
+}
+
+setInterval(update, 1000);
 
 // 2. Button for adding Employees
 $("#addTrainBtn").on("click", function(){
