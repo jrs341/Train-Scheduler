@@ -66,15 +66,27 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	// Store everything into a variable.
 	var trainName = childSnapshot.val().name;
 	var destination = childSnapshot.val().destination;
-	var firstTrain = childSnapshot.val().firstTrain;
+	var firstTrain = moment(childSnapshot.val().firstTrain);
 	var trainFrequency = childSnapshot.val().frequency;
-	var nextArrival = moment(trainTime).toNow();
-	// var minutesAway = countdown every frequency
+	var nextArrival = firstTrain.clone().add(trainFrequency, 'minutes').format('HH:mm');
+
+	// var eventTime= 1366549200; // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
+	// var currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
+	// var diffTime = eventTime - currentTime;
+	// var duration = moment.duration(diffTime*1000, 'milliseconds');
+	// var interval = 1000;
+
+	// setInterval(function(){
+ //  	duration = moment.duration(duration - interval, 'milliseconds');
+ //    $('.countdown').text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
+	// }, interval);
+	// var minutesAway = countdown every frequency;
 	// Employee Info
 	console.log(trainName);
 	console.log(destination);
 	console.log(firstTrain);
 	console.log(trainFrequency);
+	console.log(nextArrival);
 
 	// Prettify the employee start
 	// var empStartPretty = moment.unix(empStart).format("MM/DD/YY");
@@ -88,6 +100,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	// console.log(empBilled);
 
 	// Add each train's data into the table
+	// <td>" + minutesAway + "<td>"
 	$("#trainSchedule > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + trainFrequency + "</td><td>" + nextArrival + "</td>");
 // database.ref closing bracket
 });
