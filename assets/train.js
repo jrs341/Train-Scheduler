@@ -39,10 +39,10 @@ $("#addTrainBtn").on("click", function(){
 	database.ref().push(newTrain);
 
 	// Logs everything to console
-	console.log(newTrain.name);
-	console.log(newTrain.destination);
-	console.log(newTrain.firstTrain);
-	console.log(newTrain.frequency);
+	// console.log(newTrain.name);
+	// console.log(newTrain.destination);
+	// console.log(newTrain.firstTrain);
+	// console.log(newTrain.frequency);
 
 	// Alert
 	alert("Train successfully added");
@@ -75,7 +75,6 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	// var diffTime = eventTime - currentTime;
 	// var duration = moment.duration(diffTime*1000, 'milliseconds');
 	// var interval = 1000;
-
 	// setInterval(function(){
  //  	duration = moment.duration(duration - interval, 'milliseconds');
  //    $('.countdown').text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
@@ -87,6 +86,15 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	console.log(firstTrain);
 	console.log(trainFrequency);
 	console.log(nextArrival);
+	console.log(moment());
+	if (moment() > firstTrain) {
+		console.log('in function');
+		var diff = firstTrain - moment();
+		console.log(moment(diff).format('LLL'));
+
+	} else {
+		console.log('Train will start running' + firstTrain.format('LLL'));
+	}
 
 	// Prettify the employee start
 	// var empStartPretty = moment.unix(empStart).format("MM/DD/YY");
