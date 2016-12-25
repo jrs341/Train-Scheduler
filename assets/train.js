@@ -28,7 +28,7 @@ $("#addTrainBtn").on("click", function(){
 	var trainTime = moment($("#trainTime").val().trim(), "HH:mm").subtract(10, "years").format("X");
 	var trainFrequency = $("#frequency").val().trim();
 
-	// Creates local "temporary" object for holding employee data
+	// Creates local "temporary" object for holding train data
 	var newTrain = {
 		name: trainName,
 		destination: trainDestination,
@@ -69,33 +69,14 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	var destination = childSnapshot.val().destination;
 	var firstTrain = childSnapshot.val().firstTrain;
 	var trainFrequency = childSnapshot.val().frequency;
-	// var nextArrival = firstTrain.clone().add(trainFrequency, 'minutes').format('HH:mm');
-
-	// Train Info
-	// console.log(trainName);
-	// console.log(destination);
-	// console.log(firstTrain);
-	// console.log(trainFrequency);
-	// console.log(nextArrival);
-	// console.log(moment());
-	// if (moment() > firstTrain) {
-	// 	console.log('in function');
-	// 	var diff = firstTrain - moment();
-	// 	console.log(moment(diff).format('LLL'));
+	
 	var differenceTimes = moment().diff(moment.unix(firstTrain), "minutes");
 	var remainingTime = moment().diff(moment.unix(firstTrain), "minutes") % trainFrequency;
 	var minutes = trainFrequency - remainingTime;
 	var nextArrival = moment().add(minutes, "m").format("HH:mm");
-	console.log(remainingTime);
-	console.log(minutes);
-	console.log(nextArrival);
-
-	// } else {
-	// 	console.log('Train will start running' + firstTrain.format('LLL'));
-	// }
 
 	// Add each train's data into the table
-	// <td>" + minutesAway + "<td>"
+
 	$("#trainSchedule > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + trainFrequency + "</td><td>" + nextArrival + "</td><td>" + minutes + "<td>");
 // database.ref closing bracket
 });
