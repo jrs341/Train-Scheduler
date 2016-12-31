@@ -1,15 +1,23 @@
 $(document).ready(function(){
 
  // Initialize Firebase
+ // var config = {
+ //    apiKey: "AIzaSyC-T4CF5Tpz3hK9pm9uNOAcfLj1aZc5cgA",
+ //    authDomain: "train-schedule-7e43c.firebaseapp.com",
+ //    databaseURL: "https://train-schedule-7e43c.firebaseio.com",
+ //    storageBucket: "",
+ //    messagingSenderId: "389401805604"
+ //  };
+ //  firebase.initializeApp(config);
  var config = {
-    apiKey: "AIzaSyC-T4CF5Tpz3hK9pm9uNOAcfLj1aZc5cgA",
-    authDomain: "train-schedule-7e43c.firebaseapp.com",
-    databaseURL: "https://train-schedule-7e43c.firebaseio.com",
-    storageBucket: "",
-    messagingSenderId: "389401805604"
+    apiKey: "AIzaSyDP-GyfomT1ON6JxYrFCDAL2uSmCN3uFBI",
+    authDomain: "trainscheduler-a257c.firebaseapp.com",
+    databaseURL: "https://trainscheduler-a257c.firebaseio.com",
+    storageBucket: "trainscheduler-a257c.appspot.com",
+    messagingSenderId: "150982490935"
   };
   firebase.initializeApp(config);
-
+  
 var database = firebase.database();
 
 // Displays a clock on the page
